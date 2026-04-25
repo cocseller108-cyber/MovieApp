@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData[ "Title"] - MovieFinds</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/netflix.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header">
+        <div class="container-fluid nav-container">
+            <h1 class="app-title">MovieFinds</h1>
+        </div>
+    </header>
+
+    <div class="container main-container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 - MovieFinds
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/netflix.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

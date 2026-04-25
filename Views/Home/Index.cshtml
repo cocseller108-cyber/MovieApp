@@ -1,0 +1,131 @@
+﻿@{
+    var movie = ViewBag.Movie as Movie;
+    var watchlist = ViewBag.Watchlist as List<Movie>;
+    var top10 = ViewBag.Top10 as List<Movie>;
+    var purchased = ViewBag.Purchased as List<Movie>;
+}
+
+<!-- MESSAGE -->
+@if (TempData["Message"] != null)
+{
+    <p class="message">
+        @TempData["Message"]
+    </p>
+}
+
+<!-- SEARCH -->
+<div class="search-section">
+    <form method="post" asp-action="Search" class="search-form">
+        <input type="text" name="title" placeholder="Search movies..." required />
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<!-- SEARCH RESULT -->
+@if (movie != null)
+{
+    <h2 class="section-title">Search Result</h2>
+
+    <div class="movies-grid">
+        <div class="movie-card animate-card">
+            <img src="@movie.Poster" />
+            <h3>@movie.Title</h3>
+            <p>@movie.Genre</p>
+            <p>Price: ₱@movie.Price</p>
+
+            <form method="post" asp-action="BuyMovie">
+                <input type="hidden" name="imdbID" value="@movie.ImdbID" />
+                <input type="hidden" name="title" value="@movie.Title" />
+                <input type="hidden" name="price" value="@movie.Price" />
+                <input type="hidden" name="poster" value="@movie.Poster" />
+
+                <input type="number"
+                       name="userMoney"
+                       placeholder="Enter money (₱)"
+                       step="0.01"
+                       required />
+
+                <button type="submit" class="buy-btn">🛒 Buy Movie</button>
+            </form>
+        </div>
+    </div>
+}
+
+<!-- WATCHLIST -->
+<h2 class="section-title">❤️ Watchlist</h2>
+
+@if (watchlist != null && watchlist.Count > 0)
+{
+    <div class="movies-grid">
+        @foreach (var m in watchlist)
+        {
+            <div class="movie-card animate-card">
+                <img src="@m.Poster" />
+                <h3>@m.Title</h3>
+                <p>Price: ₱@m.Price</p>
+
+                <form method="post" asp-action="BuyMovie">
+                    <input type="hidden" name="imdbID" value="@m.ImdbID" />
+                    <input type="hidden" name="title" value="@m.Title" />
+                    <input type="hidden" name="price" value="@m.Price" />
+                    <input type="hidden" name="poster" value="@m.Poster" />
+
+                    <input type="number"
+                           name="userMoney"
+                           placeholder="Enter money (₱)"
+                           step="0.01"
+                           required />
+
+                    <button type="submit" class="buy-btn">🛒 Buy</button>
+                </form>
+
+                <a asp-action="Remove" asp-route-id="@m.ImdbID" class="remove-btn">
+                    ❌ Remove
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p class="no-movies">No movies in watchlist</p>
+}
+
+<!-- PURCHASED -->
+<h2 class="section-title">📦 Purchased Movies</h2>
+
+@if (purchased != null && purchased.Count > 0)
+{
+    <div class="movies-grid">
+        @foreach (var m in purchased)
+        {
+            <div class="movie-card animate-card">
+                <img src="@m.Poster" />
+                <h3>@m.Title</h3>
+                <p>✅ Owned</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p class="no-movies">No purchases yet</p>
+}
+
+<!-- TOP 10 -->
+<h2 class="section-title">🔥 Top 10 Movies</h2>
+
+<div class="movies-row">
+@if (top10 != null && top10.Count > 0)
+{
+    foreach (var m in top10)
+    {
+        <div class="movie-card animate-card">
+            <img src="@m.Poster" />
+            <h3>@m.Title</h3>
+            <p>⭐ @m.ImdbRating</p>
+            <p>₱@m.Price</p>
+        </div>
+    }
+}
+</div>

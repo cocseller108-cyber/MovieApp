@@ -1,0 +1,169 @@
+body {
+    background-color: #141414;
+    color: #fff;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+.header {
+    background-color: #141414;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.app-title {
+    color: #e50914;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* SEARCH */
+.search-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-form input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #e50914;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #f6121d;
+}
+
+/* TITLES */
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #e50914;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+/* GRID (Watchlist + Search + Purchased) */
+.movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* TOP 10 ROW (FIXED LAYOUT) */
+.movies-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* MOVIE CARD */
+.movie-card {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.movie-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.movie-card p {
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+/* BUTTONS */
+.buy-btn {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #f6121d;
+}
+
+.add-btn, .remove-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #e50914;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.add-btn:hover, .remove-btn:hover {
+    background-color: #f6121d;
+}
+
+/* ANIMATION */
+.animate-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MESSAGES */
+.message {
+    color: #00ff88;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* EMPTY STATE */
+.no-movies {
+    color: #aaa;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+}
